@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      180deg,
+      rgba(2, 0, 36, 0.8) 0%,
+      rgba(254, 134, 45, 0.8) 100%
+    ),
+    url(https://borneo24.com/wp-content/uploads/2021/03/ULM-2.jpg);
+  background-size: cover;
+  z-index: -1;
+}
+
+body {
+  font-family: system-ui;
+  min-height: 1200px;
+}
+
+h1,
+p {
+  text-align: center;
+  color: white;
+}
+
+form {
+  max-width: 600px;
+  background: rgb(119, 119, 119, 0.7);
+  margin: 0 auto;
+  padding: 20px 40px;
+  color: white;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  height: 35px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 0;
+  padding: 10px;
+  font-family: inherit;
+}
+
+textarea {
+  height: 80px;
+}
+
+button {
+  width: 100%;
+  height: 35px;
+  background-color: rgb(254, 134, 45);
+  border: 0;
+  border-radius: 5px;
+}

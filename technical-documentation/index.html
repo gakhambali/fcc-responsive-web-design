@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Built-in Documentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navbar">
+        <header id="navheader">Python Built-in Documentation</header>
+        <li><a href="#Built-in_Types">Built-in Types</a></li>
+        <li><a href="#Truth_Value_Testing" class="nav-link">Truth Value Testing</a></li>
+        <li><a href="#Boolean_Operations" class="nav-link">Boolean Operations</a></li>
+        <li><a href="#Comparisons" class="nav-link">Comparisons</a></li>
+        <li><a href="#Numeric_Types" class="nav-link">Numeric Types</a></li>
+        <li><a href="#Iterator_Types" class="nav-link">Iterator Types</a></li>
+           
+    </nav>
+    <main id="main-doc">
+        <header id="Built-in_Types">Built-in Types</header>
+        <p>
+            The following sections describe the standard types that are built into the interpreter.
+        </p> 
+        <p>
+            The principal built-in types are numerics, sequences, mappings, classes, instances and exceptions.
+        </p>
+        <p>
+            Some collection classes are mutable. The methods that add, subtract, or rearrange their members in place, and don’t return a specific item, never return the collection instance itself but None.
+        </p>
+        <p>
+            Some operations are supported by several object types; in particular, practically all objects can be compared for equality, tested for truth value, and converted to a string (with the repr() function or the slightly different str() function). The latter function is implicitly used when an object is written by the print() function.            
+        </p> 
+        
+        <section class="main-section" id="Truth_Value_Testing">
+            <header>Truth Value Testing</header>
+            <p>
+                Any object can be tested for truth value, for use in an if or while condition or as operand of the Boolean operations below.</p>
+            <p>
+                By default, an object is considered true unless its class defines either a __bool__() method that returns False or a __len__() method that returns zero, when called with the object. 1 Here are most of the built-in objects considered false:
+                <ul>
+                    <li>
+                        constants defined to be false: None and False
+                    </li>
+                    <li>
+                        zero of any numeric type: 0, 0.0, 0j, Decimal(0), Fraction(0, 1)
+                    </li>
+                    <li>
+                        empty sequences and collections: '', (), [], {}, set(), range(0)
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Operations and built-in functions that have a Boolean result always return 0 or False for false and 1 or True for true, unless otherwise stated. (Important exception: the Boolean operations or and and always return one of their operands.)
+            </p>
+        </section>
+        <section class="main-section" id="Boolean_Operations">
+            <header>Boolean Operations</header>
+            <p>
+                These are the Boolean operations, ordered by ascending priority:
+                <table id="main-table">
+                    <tr>
+                        <th>Operation</th>
+                        <th>Result</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>x or y</td>
+                        <td>if x is false, then y, else x</td>
+                        <td>(1)</td>
+                    </tr>
+                    <tr>
+                        <td>x and y</td>
+                        <td>if x is false, then x, else y</td>
+                        <td>(2)</td>
+                    </tr>
+                    <tr>
+                        <td>not x</td>
+                        <td>if x is false, then True, else False</td>
+                        <td>(3)</td>
+                    </tr>
+                </table>
+            </p>
+            <p>
+                Notes:
+                <ol>
+                    <li>
+                        This is a short-circuit operator, so it only evaluates the second argument if the first one is false.
+                    </li>
+                    <li>
+                        This is a short-circuit operator, so it only evaluates the second argument if the first one is true.
+                    </li>
+                    <li>
+                        not has a lower priority than non-Boolean operators, so not a == b is interpreted as not (a == b), and a == not b is a syntax error.
+                    </li>
+                </ol>
+            </p>
+
+        </section>
+        <section class="main-section" id="Comparisons">
+            <header>Comparisons</header>
+            <p>
+                There are eight comparison operations in Python. They all have the same priority (which is higher than that of the Boolean operations). Comparisons can be chained arbitrarily; for example, x < y <= z is equivalent to x < y and y <= z, except that y is evaluated only once (but in both cases z is not evaluated at all when x < y is found to be false).
+            </p>
+            
+            <p>
+                This table summarizes the comparison operations:
+                <table id="main-table">
+                    <tr>
+                        <th>
+                            Operation
+                        </th>
+                        <th>
+                            Meaning
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <
+                        </td>
+                        <td>
+                            strictly less than
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <=
+                        </td>
+                        <td>
+                            less than or equal
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>></td>
+                        <td>
+                            strictly greater than
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            >=
+                        </td>
+                        <td>
+                            greater than or equal
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>==</td>
+                        <td>
+                            equal
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>!=</td>
+                        <td>
+                            not equal
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>is</td>
+                        <td>
+                            object identity
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>is not</td>
+                        <td>
+                            negated object identity
+                        </td>
+                    </tr>
+                </table>
+            </p>
+            <p>
+                Objects of different types, except different numeric types, never compare equal. The == operator is always defined but for some object types (for example, class objects) is equivalent to is. The <, <=, > and >= operators are only defined where they make sense; for example, they raise a TypeError exception when one of the arguments is a complex number.
+            </p>
+            <p>
+                Non-identical instances of a class normally compare as non-equal unless the class defines the 
+                <a href="https://docs.python.org/3/reference/datamodel.html#object.__eq__" target="_blank">__eq__()</a> method.
+            </p>
+            <p>
+                Instances of a class cannot be ordered with respect to other instances of the same class, or other types of object, unless the class defines enough of the methods 
+                <a href="https://docs.python.org/3/reference/datamodel.html#object.__lt__" target="_blank">__lt__()</a> , 
+                <a href="https://docs.python.org/3/reference/datamodel.html#object.__le__" target="_blank">__le__()</a>, 
+                <a href="https://docs.python.org/3/reference/datamodel.html#object.__gt__" target="_blank">__gt__()</a>, and 
+                <a href="https://docs.python.org/3/reference/datamodel.html#object.__ge__" target="_blank">__ge__()</a> (in general, 
+                <a href="https://docs.python.org/3/reference/datamodel.html#object.__lt__" target="_blank">__lt__()</a> and 
+                <a href="https://docs.python.org/3/reference/datamodel.html#object.__eq__" target="_blank">__eq__()</a> are sufficient, if you want the conventional meanings of the comparison operators).
+            </p>
+            <p>
+                The behavior of the 
+                <a href="https://docs.python.org/3/reference/expressions.html#is" target="_blank">is</a> and 
+                <a href="https://docs.python.org/3/reference/expressions.html#is-not" target="_blank">is not</a> operators cannot be customized; also they can be applied to any two objects and never raise an exception
+            </p>
+            <p>
+                Two more operations with the same syntactic priority, 
+                <a href="https://docs.python.org/3/reference/expressions.html#in" target="_blank">in</a> and 
+                <a href="https://docs.python.org/3/reference/expressions.html#not-in" target="_blank">not in</a>, are supported by types that are 
+                <a href="https://docs.python.org/3/glossary.html#term-iterable" target="_blank">iterable</a> or implement the 
+                <a href="https://docs.python.org/3/reference/datamodel.html#object.__contains__" target="_blank">__contains__()</a> method.
+            </p>
+        </section>
+        <section class="main-section" id="Numeric_Types">
+            <header>Numeric Types</header>
+            <p>
+                There are three distinct numeric types: <i>integers, floating point numbers</i>, and <i>complex numbers</i>. In addition, Booleans are a subtype of integers. Integers have unlimited precision. Floating point numbers are usually implemented using double in C; information about the precision and internal representation of floating point numbers for the machine on which your program is running is available in 
+                <a href="https://docs.python.org/3/library/sys.html#sys.float_info" target="_blank">sys.float_info</a>. Complex numbers have a real and imaginary part, which are each a floating point number. To extract these parts from a complex number z, use z.real and z.imag. (The standard library includes the additional numeric types 
+                <a href="https://docs.python.org/3/library/fractions.html#fractions.Fraction" target="_blank">fractions.Fraction</a>, for rationals, and 
+                <a href="https://docs.python.org/3/library/decimal.html#decimal.Decimal" target="_blank">decimal.Decimal</a>, for floating-point numbers with user-definable precision.)
+            </p>
+            <p>
+                Numbers are created by numeric literals or as the result of built-in functions and operators. Unadorned integer literals (including hex, octal and binary numbers) yield integers. Numeric literals containing a decimal point or an exponent sign yield floating point numbers. Appending 'j' or 'J' to a numeric literal yields an imaginary number (a complex number with a zero real part) which you can add to an integer or float to get a complex number with real and imaginary parts.
+            </p>
+            <p>
+                Python fully supports mixed arithmetic: when a binary arithmetic operator has operands of different numeric types, the operand with the “narrower” type is widened to that of the other, where integer is narrower than floating point, which is narrower than complex. A comparison between numbers of different types behaves as though the exact values of those numbers were being compared. 
+                <a href="https://docs.python.org/3/library/stdtypes.html#id13" target="_blank">[2]</a>
+            </p>
+            <p>
+                The constructors 
+                <a href="https://docs.python.org/3/library/functions.html#int" target="_blank">int()</a>, 
+                <a href="https://docs.python.org/3/library/functions.html#float" target="_blank">float()</a>, and 
+                <a href="https://docs.python.org/3/library/functions.html#complex" target="_blank">complex()</a> can be used to produce numbers of a specific type.
+            </p>
+            <p>
+                All numeric types (except complex) support the following operations (for priorities of the operations, see 
+                <a href="https://docs.python.org/3/reference/expressions.html#operator-summary" target="_blank">Operator precedence</a>):
+                <table id="main-table">
+                    <tr>
+                        <th>Operation</th>
+                        <th>Result</th>
+                        <th>Notes</th>
+                        <th>
+                            Full documentation                 
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            x + y
+                        </td>
+                        <td>
+                            sum of x and y
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            x - y
+                        </td>
+                        <td>
+                            difference of x and y
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            x * y
+                        </td>
+                        <td>
+                            product of x and y
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            x / y                        
+                        </td>
+                        <td>
+                            quotient of x and y
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            x // y
+                        </td>
+                        <td>
+                            floored quotient of x and y
+                        </td>
+                        <td>
+                            (1)
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            x % y
+                        </td>
+                        <td>
+                            remainder of x / y
+                        </td>
+                        <td>
+                            (2)
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            -x 
+                        </td>
+                        <td>
+                            x negated
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            +x
+                        </td>
+                        <td>
+                            x unchanged
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            abs(x)
+                        </td>
+                        <td>
+                            absolute value or magnitude of x
+                        </td>
+                        <td></td>
+                        <td>
+                            <a href="https://docs.python.org/3/library/functions.html#abs" target="_blank">abs()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            int(x)
+                        </td>
+                        <td>
+                            x converted to integer
+                        </td>
+                        <td>
+                            (3)(6)
+                        </td>
+                        <td>
+                            <a href="https://docs.python.org/3/library/functions.html#int" target="_blank">int()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            float(x)
+                        </td>
+                        <td>
+                            x converted to floating point
+                        </td>
+                        <td>
+                            (4)(6)
+                        </td>
+                        <td>
+                            <a href="https://docs.python.org/3/library/functions.html#float" target="_blank">float()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            complex(re, im)
+                        </td>
+                        <td>
+                            a complex number with real part <i>re</i>, imaginary part <i> im. im</i> defaults to zero.
+                        </td>
+                        <td>
+                            (6)
+                        </td>
+                        <td>
+                            <a href="https://docs.python.org/3/library/functions.html#complex" target="_blank">complex()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            c.conjugate()
+                        </td>
+                        <td>
+                            conjugate of the complex number <i>c</i>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            divmod(x, y)
+                        </td>
+                        <td>
+                            the pair (x // y, x % y)
+                        </td>
+                        <td>
+                            (2)
+                        </td>
+                        <td>
+                            <a href="https://docs.python.org/3/library/functions.html#divmod" target="_blank">divmod()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            pow(x, y)
+                        </td>
+                        <td>
+                            x to the power y
+                        </td>
+                        <td>
+                            (5)
+                        </td>
+                        <td>
+                            <a href="https://docs.python.org/3/library/functions.html#pow" target="_blank">pow()</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            x ** y
+                        </td>
+                        <td>
+                            x to the power y
+                        </td>
+                        <td>
+                            (5)
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </p>
+            <p>
+                Notes:
+                <ol>
+                    <li>
+                        Also referred to as integer division. The resultant value is a whole integer, though the result’s type is not necessarily int. The result is always rounded towards minus infinity: 1//2 is 0, (-1)//2 is -1, 1//(-2) is -1, and (-1)//(-2) is 0.
+                    </li>
+                    <li>
+                        Not for complex numbers. Instead convert to floats using 
+                        <a href="https://docs.python.org/3/library/functions.html#abs" target="_blank">abs()</a> if appropriate.
+                    </li>
+                    <li>
+                        Conversion from floating point to integer may round or truncate as in C; see functions 
+                        <a href="https://docs.python.org/3/library/math.html#math.floor" target="_blank">math.floor()</a> and 
+                        <a href="https://docs.python.org/3/library/math.html#math.ceil" target="_blank">math.ceil()</a> for well-defined conversions.
+                    </li>
+                    <li>
+                        float also accepts the strings “nan” and “inf” with an optional prefix “+” or “-” for Not a Number (NaN) and positive or negative infinity.
+                    </li>
+                    <li>
+                        Python defines pow(0, 0) and 0 ** 0 to be 1, as is common for programming languages
+                    </li>
+                    <li>
+                        The numeric literals accepted include the digits 0 to 9 or any Unicode equivalent (code points with the Nd property).
+                    </li>
+                </ol>
+            </p>
+            <p>
+                See <a href="https://www.unicode.org/Public/13.0.0/ucd/extracted/DerivedNumericType.txt" target="_blank">https://www.unicode.org/Public/13.0.0/ucd/extracted/DerivedNumericType.txt</a> for a complete list of code points with the Nd property.
+            </p>
+            <div class="submain-doc">
+                <h3>
+                    Additional Methods on Integer Types
+                </h3>
+                <p>
+                    The int type implements the numbers.Integral abstract base class. In addition, it provides a few more methods:
+                </p>
+                <p>
+                    int.<strong>bit_length()</strong>
+                    <div class="submain-code">
+                        <p>
+                            Return the number of bits necessary to represent an integer in binary, excluding the sign and leading zeros:
+                        </p>
+                        <code>
+                            <pre>
+    >>> n = -37
+    >>> bin(n)
+    '-0b100101'
+    >>> n.bit_length()
+    6                                                 
+                            </pre>
+                        </code> 
+                        <p>
+                            More precisely, if x is nonzero, then x.bit_length() is the unique positive integer k such that 2**(k-1) <= abs(x) < 2**k. Equivalently, when abs(x) is small enough to have a correctly rounded logarithm, then k = 1 + int(log(abs(x), 2)). If x is zero, then x.bit_length() returns 0.
+                        </p>
+                        <p>
+                            Equivalent to:
+                        </p>
+                        <code>
+                            <pre>
+    def bit_length(self):
+    s = bin(self)       # binary representation:  bin(-37) --> '-0b100101'
+    s = s.lstrip('-0b') # remove leading zeros and minus sign
+    return len(s)       # len('100101') --> 6
+                            </pre>
+                        </code>
+                        <p>
+                            <i>
+                                New in version 3.1.
+                            </i>
+                        </p>
+                    </div>
+                    <p>
+                        int.<strong>to_bytes</strong> (<i>length, byteorder, *, signed=False</i>)
+                    </p>
+                    <div class="submain-code">
+                        <p>
+                            Return an array of bytes representing an integer.
+                        </p>
+                        <code>
+                            <pre>
+    (1024).to_bytes(2, byteorder='big')
+    b'\x04\x00'
+
+    (1024).to_bytes(10, byteorder='big')
+    b'\x00\x00\x00\x00\x00\x00\x00\x00\x04\x00'
+
+    (-1024).to_bytes(10, byteorder='big', signed=True)
+    b'\xff\xff\xff\xff\xff\xff\xff\xff\xfc\x00'
+
+    x = 1000
+    x.to_bytes((x.bit_length() + 7) // 8, byteorder='little')
+    b'\xe8\x03'
+                            </pre>
+                        </code>
+                        <p>
+                            The integer is represented using length bytes. An OverflowError is raised if the integer is not representable with the given number of bytes.
+                        </p>
+                        <p>
+                            The byteorder argument determines the byte order used to represent the integer. If byteorder is "big", the most significant byte is at the beginning of the byte array. If byteorder is "little", the most significant byte is at the end of the byte array. To request the native byte order of the host system, use sys.byteorder as the byte order value.
+                        </p>
+                        <p>
+                            The signed argument determines whether two’s complement is used to represent the integer. If signed is False and a negative integer is given, an OverflowError is raised. The default value for signed is False.
+                        </p>
+                        <p>
+                            New in version 3.2.
+                        </p>
+                    </div>
+                    <p>
+                        classmethod int. <strong>from_bytes</strong>(<i>bytes, byteorder, *, signed=False</i>)
+                    </p>
+                    <div class="submain-code">
+                        <p>
+                            Return the integer represented by the given array of bytes.
+                        </p>
+                        <code>
+                            <pre>
+    int.from_bytes(b'\x00\x10', byteorder='big')
+    16
+
+    int.from_bytes(b'\x00\x10', byteorder='little')
+    4096
+
+    int.from_bytes(b'\xfc\x00', byteorder='big', signed=True)
+    -1024
+
+    int.from_bytes(b'\xfc\x00', byteorder='big', signed=False)
+    64512
+
+    int.from_bytes([255, 0, 0], byteorder='big')
+    16711680
+                            </pre>
+                        </code>
+                        <p>
+                            The argument <i>bytes</i> must either be a 
+                            <a href="https://docs.python.org/3/glossary.html#term-bytes-like-object" target="_blank">bytes-like object</a> or an iterable producing bytes.
+                        </p>
+                        <p>
+                            The byteorder argument determines the byte order used to represent the integer. If byteorder is "big", the most significant byte is at the beginning of the byte array. If byteorder is "little", the most significant byte is at the end of the byte array. To request the native byte order of the host system, use sys.byteorder as the byte order value.
+                        </p>
+                        <p>
+                            The signed argument indicates whether two’s complement is used to represent the integer.
+                        </p>
+                        <p><i>New in version 3.2.</i></p>
+                    </div>
+                    <p>
+                        int.<strong> as_integer_ratio()</strong>
+                    </p>
+                    <div class="submain-code">
+                        <p>
+                            Return a pair of integers whose ratio is exactly equal to the original integer and with a positive denominator. The integer ratio of integers (whole numbers) is always the integer as the numerator and 1 as the denominator.
+                        </p>
+                        <p>
+                            <i>
+                                New in version 3.8.
+                            </i>
+                        </p>
+                    </div>
+                </p>
+            </div>
+            <div class="submain-doc">
+                <h3>
+                    Additional Methods on Float
+                </h3>
+                <p>
+                    The float type implements the 
+                    <a href="https://docs.python.org/3/library/numbers.html#numbers.Real" target="_blank">numbers.Real</a>
+                    <a href="https://docs.python.org/3/glossary.html#term-abstract-base-class" target="_blank">abstract base class</a>. float also has the following additional methods.
+                </p>
+                <p>
+                    float.<strong>as_integer_ratio()</strong>
+                </p>
+                <div class="submain-code">
+                    <p>
+                        Return a pair of integers whose ratio is exactly equal to the original float and with a positive denominator. Raises OverflowError on infinities and a ValueError on NaNs.
+                    </p>
+                </div>
+                <p>
+                    float<strong>
+                        .is_integer()
+                    </strong>
+                </p>
+                <div class="submain-code">
+                    <p>
+                        Return True if the float instance is finite with integral value, and False otherwise:
+                    </p>
+                    <code>
+                        <pre>
+    >>> (-2.0).is_integer()
+    True
+
+    >>> (3.2).is_integer()
+    False
+                        </pre>
+                    </code>
+                </div>
+                <p>
+                    Two methods support conversion to and from hexadecimal strings. Since Python’s floats are stored internally as binary numbers, converting a float to or from a decimal string usually involves a small rounding error. In contrast, hexadecimal strings allow exact representation and specification of floating-point numbers. This can be useful when debugging, and in numerical work.
+                </p>
+            </div>
+            <div class="submain-doc">
+                <h3>
+                    Hashing of numeric types
+                </h3>
+                <p>
+                    For numbers x and y, possibly of different types, it’s a requirement that hash(x) == hash(y) whenever x == y (see the __hash__() method documentation for more details). For ease of implementation and efficiency across a variety of numeric types (including int, float, decimal.Decimal and fractions.Fraction) Python’s hash for numeric types is based on a single mathematical function that’s defined for any rational number, and hence applies to all instances of int and fractions.Fraction, and all finite instances of float and decimal.Decimal. Essentially, this function is given by reduction modulo P for a fixed prime P. The value of P is made available to Python as the modulus attribute of sys.hash_info.
+                </p>
+                <p>
+                    To clarify the above rules, here’s some example Python code, equivalent to the built-in hash, for computing the hash of a rational number, float, or complex:
+                </p>
+                <div class="submain-code">
+                    <code>
+                        <pre>
+import sys, math
+
+def hash_fraction(m, n):
+    """Compute the hash of a rational number m / n.
+
+    Assumes m and n are integers, with n positive.
+    Equivalent to hash(fractions.Fraction(m, n)).
+
+    """
+    P = sys.hash_info.modulus
+    # Remove common factors of P.  (Unnecessary if m and n already coprime.)
+    while m % P == n % P == 0:
+        m, n = m // P, n // P
+
+    if n % P == 0:
+        hash_value = sys.hash_info.inf
+    else:
+        # Fermat's Little Theorem: pow(n, P-1, P) is 1, so
+        # pow(n, P-2, P) gives the inverse of n modulo P.
+        hash_value = (abs(m) % P) * pow(n, P - 2, P) % P
+    if m < 0:
+        hash_value = -hash_value
+    if hash_value == -1:
+        hash_value = -2
+    return hash_value
+
+def hash_float(x):
+    """Compute the hash of a float x."""
+
+    if math.isnan(x):
+        return sys.hash_info.nan
+    elif math.isinf(x):
+        return sys.hash_info.inf if x > 0 else -sys.hash_info.inf
+    else:
+        return hash_fraction(*x.as_integer_ratio())
+
+def hash_complex(z):
+    """Compute the hash of a complex number z."""
+
+    hash_value = hash_float(z.real) + sys.hash_info.imag * hash_float(z.imag)
+    # do a signed reduction modulo 2**sys.hash_info.width
+    M = 2**(sys.hash_info.width - 1)
+    hash_value = (hash_value & (M - 1)) - (hash_value & M)
+    if hash_value == -1:
+        hash_value = -2
+    return hash_value
+                        </pre>
+                    </code>
+                </div>
+            </div>
+        </section>
+        <section class="main-section" id="Iterator_Types">
+            <header>Iterator Types</header>
+            <p>
+                Python supports a concept of iteration over containers. This is implemented using two distinct methods; these are used to allow user-defined classes to support iteration. Sequences, described below in more detail, always support the iteration methods.
+            </p>
+        </section>
+
+    </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>

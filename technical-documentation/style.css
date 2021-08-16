@@ -1,0 +1,134 @@
+
+html{
+    font-size: 10px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Londrina+Solid:wght@100;300;900&display=swap');
+* {
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+/*Navbar */
+nav{
+    font-size: 1.5rem;
+    min-width: 160px;
+    padding: 10px;
+    background-color: rgb(3, 4, 94);
+    border-bottom: 3px solid #999;
+}
+
+
+nav header{
+    font-family: Londrina Solid, sans-serif;
+    font-weight: 900;
+    color: rgb(0, 180, 216);
+    margin: 10px 0;
+
+}
+
+nav li{
+    list-style-type: none;
+    margin: 10px 0;
+}
+
+nav li a{
+    font-family: Londrina Solid, sans-serif;;
+    color: rgb(173, 232, 244);
+}
+
+nav li a:link{
+    text-decoration: none;
+}
+
+#navheader{
+    margin: 10px 0;
+}
+/* Main Document - Right seide */
+main{
+    font-family: Londrina Solid, sans-serif;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-right: 100px;
+    font-size: 1.5rem;
+    background-color: rgb(202, 240, 248) ;
+    color: rgb(3, 4, 94);
+}
+
+main header{
+    font-family: Londrina Solid, sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 10px 15px;
+}
+
+main p{
+    margin: 10px 15px;
+    text-align: justify;
+}
+
+main p a{
+    text-decoration: none;
+}
+
+.main-section{
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+.submain-doc h3{
+    font-weight: 600;
+    margin: 10px 15px;
+}
+
+/* Code layout */
+.submain-code{
+    padding: 0 10px;
+}
+
+.submain-code code pre{
+    margin: 15px 10px;
+    width: 100%;
+    background-color:#023e8a;
+    color: #caf0f8;
+}
+/* Table layout */
+#main-table{
+    vertical-align: middle;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#main-table, th, td{
+    border: 1px solid grey;
+}
+
+th{
+    background-color: lightgrey;
+}
+
+/* Media Query */
+@media only screen and (max-width: 576px) {
+    body {
+      flex-direction: column;
+    }
+  
+    nav {
+      border-bottom: 3px solid #333;
+      overflow-y: scroll;
+      height: 120px;
+    }
+  
+    main {
+      overflow-y: unset;
+    }
+}
+

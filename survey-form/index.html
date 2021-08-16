@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Survey Form</title>
+</head>
+<body>
+	<h1 id="title">HIMATEKKIM FT ULM Recruitment Form</h1>
+	<p id="description">Thank you for participation!</p>
+	<form id="survey-form">
+		<div class="survey-group">
+			<label id="name-label" for="name">
+				Name 
+				<input type="text" id="name" placeholder="Please enter your name" required>
+			</label>
+			<label id="email-label" for="email">
+				Email
+				<input type="email" id="email" placeholder="Please enter your email" required>
+			</label>
+			<label type="number" for="number" id="number-label">
+				Age
+				<input type="number" id="number" placeholder="Please enter your age" min="17" max="35">
+			</label>
+			<label for="dropdown" id="dropdown-label">
+				Which HIMATEKKIM's Department you would like to join?
+				<select name="" id="dropdown">
+					<option value="">Keagamaan</option>
+					<option value="">P3</option>
+					<option value="">Hubungan Masyarakat</option>
+					<option value="">Dana dan Usaha</option>
+					<option value="">Publikasi dan Komunikasi</option>
+					<option value="">Kepemimpinan dan Organisasi</option>
+					<option value="">Minat dan Bakat</option>
+				</select>
+			</label>
+			<label for="religion" id="religion-label">
+				What is your religion?<br>
+				<input type="radio" name="religion" value="1" checked /> Islam <br />
+      <input type="radio" name="religion" value="2" /> Katolik <br />
+      <input type="radio" name="religion" value="3" /> Kristen <br />
+      <input type="radio" name="religion" value="4" /> Hindu <br />
+      <input type="radio" name="religion" value="5" /> Buddha <br />
+			</label>
+			<label for="interest" id="interest-label"> Please choose your interest and talent! <br>
+				<input type="checkbox" value="traditional-dances" /> Traditional dances <br/>
+      	<input type="checkbox" value="choir" /> Choir <br/>
+      	<input type="checkbox" value="futsal" /> Futsal <br/>
+      	<input type="checkbox" value="volley-ball" /> Volley Ball <br/>
+				<input type="checkbox" value="badminton" /> Badminton <br/>
+				<input type="checkbox" value="music-band" /> Music & Band <br/>
+			</label>
+	      
+			<label for="comments" id="comments-label">
+        What is your motivation to join HIMATEKKIM FT ULM
+        <textarea id="comments" cols="30" rows="10"></textarea>
+      </label>
+			<button id="submit">Submit</button>
+		</div>
+	</form>
+</body>
+</html>
